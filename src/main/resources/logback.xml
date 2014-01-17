@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d;%5p] [%t] [%c] [%X{userId};%X{sessionId};%r] : %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- DEBUG szinten a jelenlegi projekt -->
+    <logger name="hu.vanio.springwsmtom" level="DEBUG" />
+ 
+    <!-- INFO szinten minden ami nem a jelenlegi projekt -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
