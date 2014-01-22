@@ -11,7 +11,7 @@
     <context:component-scan base-package="hu.vanio.springwsmtom"/>
     
     <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
-        <property name="contextPath" value="hu.vanio.springwsmtom.xmltypes"/>
+        <property name="contextPath" value="hu.vanio.springwsmtom.wstypes"/>
         <property name="mtomEnabled" value="true"/>
     </bean>
     
@@ -26,16 +26,9 @@
         <property name="methodReturnValueHandlers" ref="methodProcessor"/>
     </bean>
     
-    <!-- XSD publikálás -->
-    <bean id="schema" class="org.springframework.xml.xsd.SimpleXsdSchema">
-        <property name="xsd" value="/WEB-INF/xsd/schema.xsd"/>
-    </bean>
-    
-    <sws:annotation-driven marshaller="marshaller" unmarshaller="marshaller"/>
-
-    <sws:dynamic-wsdl id="loadImageService"
-                      portTypeName="loadImageHttpPort"
-                      locationUri="/service/loadImage/"
+    <sws:dynamic-wsdl id="contentStore"
+                      portTypeName="contentStoreHttpPort"
+                      locationUri="/service/contentStore"
                       targetNamespace="http://www.springframework.org/spring-ws/samples/mtom"
                       requestSuffix="Request"
                       responseSuffix="Response">

@@ -12,7 +12,7 @@
             </goals>
             <properties>
                 <netbeans.deploy>true</netbeans.deploy>
-                <netbeans.deploy.clientUrlPart>/service/loadImage/loadImageService.wsdl</netbeans.deploy.clientUrlPart>
+                <netbeans.deploy.clientUrlPart>/service/contentStore.wsdl</netbeans.deploy.clientUrlPart>
             </properties>
         </action>
         <action>
@@ -28,7 +28,7 @@
             <properties>
                 <netbeans.deploy.debugmode>true</netbeans.deploy.debugmode>
                 <netbeans.deploy>true</netbeans.deploy>
-                <netbeans.deploy.clientUrlPart>/service/loadImage/loadImageService.wsdl</netbeans.deploy.clientUrlPart>
+                <netbeans.deploy.clientUrlPart>/service/contentStore.wsdl</netbeans.deploy.clientUrlPart>
             </properties>
         </action>
         <action>
@@ -44,7 +44,21 @@
             <properties>
                 <netbeans.deploy>true</netbeans.deploy>
                 <netbeans.deploy.profilemode>true</netbeans.deploy.profilemode>
-                <netbeans.deploy.clientUrlPart>/service/loadImage/loadImageService.wsdl</netbeans.deploy.clientUrlPart>
+                <netbeans.deploy.clientUrlPart>/service/contentStore.wsdl</netbeans.deploy.clientUrlPart>
+            </properties>
+        </action>
+        <action>
+            <actionName>test.single</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>test-compile</goal>
+                <goal>surefire:test</goal>
+            </goals>
+            <properties>
+                <test>${packageClassName}</test>
+                <saaj.use.mimepull>true</saaj.use.mimepull>
             </properties>
         </action>
     </actions>

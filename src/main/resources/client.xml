@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation=
+            "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="client" abstract="true">
+        <property name="defaultUri" value="http://localhost:9080/spring-ws-mtom-example/service/loadContent/"/>
+    </bean>
+
+    <bean id="saajClient" class="hu.vanio.springwsmtom.client.SaajMtomClient" parent="client">
+        <constructor-arg>
+            <bean class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
+        </constructor-arg>
+        <property name="marshaller" ref="marshaller"/>
+        <property name="unmarshaller" ref="marshaller"/>
+    </bean>
+
+    <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="hu.vanio.springwsmtom.wstypes"/>
+        <property name="mtomEnabled" value="true"/>
+    </bean>
+
+    <bean id="axiomClient" class="hu.vanio.springwsmtom.client.AxiomMtomClient" parent="client">
+        <constructor-arg>
+            <bean class="org.springframework.ws.soap.axiom.AxiomSoapMessageFactory">
+                <property name="payloadCaching" value="false" />
+                <property name="attachmentCaching" value="false"/>
+                <property name="attachmentCacheThreshold" value="1024"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+</beans>
