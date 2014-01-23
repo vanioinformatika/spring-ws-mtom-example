@@ -26,14 +26,7 @@
         <property name="methodReturnValueHandlers" ref="methodProcessor"/>
     </bean>
     
-    <sws:dynamic-wsdl id="contentStore"
-                      portTypeName="contentStoreHttpPort"
-                      locationUri="/service/contentStore"
-                      targetNamespace="http://www.springframework.org/spring-ws/samples/mtom"
-                      requestSuffix="Request"
-                      responseSuffix="Response">
-        <sws:xsd location="/WEB-INF/xsd/schema.xsd"/>
-    </sws:dynamic-wsdl>
+    <sws:static-wsdl id="contentStore" location="classpath:/contentStore.wsdl"/>
     
 </beans>
 
